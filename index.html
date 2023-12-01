@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ключевое слово 1, ключевое слово 2, ключевое слово 3"> 
+    <meta name="description" content="Описание вашей страницы здесь">
+    <meta http-equiv="Content-Language" content="ru">
+    <title>Online-shop</Online-shop></title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="tab.css">
+    <link rel="stylesheet" type="text/css" href="swiper.css">
+    <link rel="stylesheet" type="text/css" href="info.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="scripts/pageLoadTime.js"></script>
+    <script src="scripts/nowPage.js" defer></script>
+    <script src="scripts/swiper.js" defer></script>
+    <script src="scripts/info.js" ></script>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Магазин чая</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="productCard.html">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+    
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide"><img class="swipe-card" src="slide1.jpg"/></div>
+              <div class="swiper-slide"><img class="swipe-card" src="slide2.jpg"></div>
+              <div class="swiper-slide"><img class="swipe-card" src="slide3.jpg"></div>
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="products">
+            
+        <div class="product-card">
+            <img src="1.jpg" alt="Товар" class="product-image">
+            <h2 class="product-title">Чай 1</h2>
+            <span class="product-price">$3.99</span>
+            <button  class="product-button" data-toggle="modal" data-target="#myModal">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="2.jpg" alt="Товар" class="product-image">
+            <h2 class="product-title">Чай 2</h2>
+            <span class="product-price">$5.99</span>
+            <button class="product-button" data-toggle="modal" data-target="#myModal">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="3.jpg" alt="Товар" class="product-image">
+            <h2 class="product-title">Чай 3</h2>
+            <span class="product-price">$6.99</span>
+            <button class="product-button" data-toggle="modal" data-target="#myModal">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="4.jpg" alt="Товар" class="product-image">
+            <h2 class="product-title">Чай 4</h2>
+            <span class="product-price">$10.99</span>
+            <button class="product-button" data-toggle="modal" data-target="#myModal">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="5.jpg" alt="Товар" class="product-image">
+            <h2 class="product-title">Чай 5</h2>
+            <span class="product-price">$7.99</span>
+            <button class="product-button" data-toggle="modal" data-target="#myModal">Добавить в корзину</button>
+        </div>
+
+        </div>
+
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+              
+                <div class="modal-header">
+                  <h4 class="modal-title">Корзина</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+
+                <div class="modal-body">
+                  <p>Продукт добавлен в корзину</p>
+                </div>
+          
+  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+          
+              </div>
+            </div>
+      </div>
+    
+
+      <div id="preloader">
+            <img src="kaktus-95x128.png" alt="Loading">
+        </div>
+        
+      <div id="content"></div>
+
+      <div id="error-message"></div>
+    
+
+      <table id="grid-table">
+        <thead>
+            <tr class="grid-table-tr">
+                <th class="grid-table-th" data-type="numeric">N <span class="resize-handle"></span></th>
+                <th class="grid-table-th" data-type="text-short">Цена <span class="resize-handle"></span></th>
+                <th class="grid-table-th" data-type="text-short">Крепость <span class="resize-handle"></span></th>
+                <th class="grid-table-th" data-type="text-short">Ароматность <span class="resize-handle"></span></th>
+            </tr class="grid-table-tr">
+        </thead>
+        <tbody>
+            <tr class="grid-table-tr">
+                <td class="grid-table-td">Чай 1</td>
+                <td class="grid-table-td">$3.99</td>
+                <td class="grid-table-td">75%</td>
+                <td class="grid-table-td">1</td>
+            </tr>
+            <tr class="grid-table-tr">
+                <td class="grid-table-td">Чай 2</td>
+                <td class="grid-table-td">$4.99</td>
+                <td class="grid-table-td">15%</td>
+                <td class="grid-table-td">3</td>
+            </tr>
+            <tr class="grid-table-tr">
+                <td class="grid-table-td">Чай 3</td>
+                <td class="grid-table-td">$2.99</td>
+                <td class="grid-table-td">80%</td>
+                <td class="grid-table-td">2</td>
+            </tr>
+            </tbody>
+    </table>
+
+
+
+
+
+    </main>
+
+ 
+    
+    <footer>
+      
+            <p>&copy; 2023 Название компании</p>
+            <div id="res"></div>
+     
+
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

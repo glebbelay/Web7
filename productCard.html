@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="ключевое слово 1, ключевое слово 2, ключевое слово 3"> 
+    <meta name="description" content="Описание вашей страницы здесь">
+    <meta http-equiv="Content-Language" content="ru">
+    <title>Online-shop</Online-shop></title>
+  
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="tab.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <script src="./scripts/pageLoadTime.js"></script>
+    <script src="./scripts/nowPage.js" defer></script>
+    <script src="./scripts/generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Магазин чая</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="productCard.html">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <form id="generatorForm">
+
+            <input type="text" id="parameter" name="parameter" required>
+
+            <button type="submit">Генерировать</button>
+        </form>
+        
+        <div id="resultContainer"></div>
+        <div class="save">
+        <button id="saveButton">Сохранить отмеченные</button>
+        </div>
+    </main>
+    <footer>
+    <div id="res"></div>
+    </footer>
+</body>
+</html>
