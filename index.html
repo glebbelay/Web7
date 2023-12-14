@@ -36,15 +36,20 @@
     
 
         <div class="swiper-container">
+          
             <div class="swiper-wrapper">
 
               <div class="swiper-slide"><img class="swipe-card" src="slide1.jpg"/></div>
               <div class="swiper-slide"><img class="swipe-card" src="slide2.jpg"></div>
               <div class="swiper-slide"><img class="swipe-card" src="slide3.jpg"></div>
-
+              
             </div>
+            <div class="swiper-pagination"></div>
+            
+
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+            
         </div>
 
         <div class="products">
@@ -110,11 +115,11 @@
       </div>
     
 
-      <div id="preloader">
+      <preloader-component id="preloader">
             <img src="kaktus-95x128.png" alt="Loading">
-        </div>
+      </preloader-component>
         
-      <div id="content"></div>
+      <content-component/>
 
       <div id="error-message"></div>
     

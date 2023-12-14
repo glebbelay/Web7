@@ -1,58 +1,58 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('generatorForm');
-    const resultContainer = document.getElementById('resultContainer');
-    const saveButton = document.getElementById('saveButton');
+class GeneratorComponent extends HTMLElement {
+    constructor() {
+        super();
 
-    let savedResults = loadFromLocalStorage('results') || [];
+        this.savedResults = this.loadFromLocalStorage('results') || [];
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); 
+        this.attachShadow({ mode: 'open' });
 
-        const parameterValue = form.elements.parameter.value;
+        this.shadowRoot.innerHTML = `
+            <link rel="stylesheet" type="text/css" href="../form.css">
+            <form id="generatorForm" class="your-form-class">
+                <input type="text" name="parameter" class="your-input-class" />
+                <button type="submit" class="your-button-class">Сохранить</button>
+            </form>
+            <div id="resultContainer" class="your-result-container-class"></div>
+        `;
 
-        savedResults.push({
-            parameter: parameterValue,
-            shouldSave: false 
-        });
+        this.form = this.shadowRoot.getElementById('generatorForm');
+        this.resultContainer = this.shadowRoot.getElementById('resultContainer');
 
-        displayResults(savedResults);
-    });
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
 
-    saveButton.addEventListener('click', function () {
+        this.displayResults();
+    }
 
-        savedResults = savedResults.filter(item => item.shouldSave);
-        saveToLocalStorage('results', savedResults);
-        displayResults(savedResults);
-    });
+    handleSubmit(event) {
+        event.preventDefault();
 
-    function saveToLocalStorage(key, value) {
+        const parameterValue = this.form.elements.parameter.value;
+
+        this.savedResults.push({ parameter: parameterValue });
+        this.saveToLocalStorage('results', this.savedResults);
+        this.displayResults();
+        this.form.reset();
+    }
+
+    saveToLocalStorage(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
     }
 
-    function loadFromLocalStorage(key) {
+    loadFromLocalStorage(key) {
         const storedData = localStorage.getItem(key);
         return storedData ? JSON.parse(storedData) : null;
     }
 
-    function displayResults(results) {
-        resultContainer.innerHTML = '';
-        results.forEach((item, index) => {
+    displayResults() {
+        this.resultContainer.innerHTML = '';
+        this.savedResults.forEach((item, index) => {
             const resultElement = document.createElement('div');
-
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.checked = item.shouldSave;
-            checkbox.addEventListener('change', function () {
-                item.shouldSave = checkbox.checked;
-            });
-            resultElement.appendChild(checkbox);
-
             const resultText = document.createElement('span');
             resultText.textContent = `${item.parameter}`;
             resultElement.appendChild(resultText);
-
-            resultContainer.appendChild(resultElement);
+            this.resultContainer.appendChild(resultElement);
         });
     }
-    displayResults(savedResults);
-});
+}
+
+customElements.define('generator-component', GeneratorComponent);

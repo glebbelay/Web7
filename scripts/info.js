@@ -1,41 +1,49 @@
-document.addEventListener('DOMContentLoaded', function () {
+class PreloaderComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.innerHTML = '<div id="preloader"><img src="../kaktus-95x128.png"></div>';
+    }
+}
 
-    function fetchData() {
-        console.log('Fetching data...');
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Data received:', data);
-                document.getElementById('preloader').classList.add('loaded');
-                const filteredData = data.filter(comment => comment.id >= 70);
-                console.log('Filtered Data:', filteredData); 
-                renderData(filteredData);
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                document.getElementById('error-message').innerText = '⚠ Что-то пошло не так';
-            });
+class ContentComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
     }
 
-    function renderData(data) {
-        const contentContainer = document.getElementById('content');
-    
+    async connectedCallback() {
+        try {
 
-        contentContainer.innerHTML = '';
-    
+            this.classList.add('loading');
+
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts?id_gte=70');
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log('Data received:', data);
+            this.renderData(data);
+            this.classList.remove('loading');
+        } catch (error) {
+            console.error('Fetch error:', error);
+
+            this.shadowRoot.innerHTML = '<div id="error-message">Что-то пошло не так</div>';
+        }
+    }
+
+    renderData(data) {
+        this.shadowRoot.innerHTML = '<link rel="stylesheet" href="../info.css">';
 
         data.forEach(item => {
-            const titleElement = document.createElement('div');
+            const titleElement = document.createElement('p');
             titleElement.textContent = item.title;
-            titleElement.classList.add('title-item'); 
-            contentContainer.appendChild(titleElement);
+            titleElement.classList.add('title-item');
+            this.shadowRoot.appendChild(titleElement);
         });
     }
+}
 
-    fetchData();
-});
+customElements.define('preloader-component', PreloaderComponent);
+customElements.define('content-component', ContentComponent);
