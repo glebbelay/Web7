@@ -7,7 +7,7 @@ class GeneratorComponent extends HTMLElement {
         this.attachShadow({ mode: 'open' });
 
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" type="text/css" href="../form.css">
+            <link rel="stylesheet" type="text/css" href="form.css">
             <form id="generatorForm" class="your-form-class">
                 <input type="text" name="parameter" class="your-input-class" />
                 <button type="submit" class="your-button-class">Сохранить</button>

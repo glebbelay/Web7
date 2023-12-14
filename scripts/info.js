@@ -34,7 +34,7 @@ class ContentComponent extends HTMLElement {
     }
 
     renderData(data) {
-        this.shadowRoot.innerHTML = '<link rel="stylesheet" href="../info.css">';
+        this.shadowRoot.innerHTML = '<link rel="stylesheet" href="info.css">';
 
         data.forEach(item => {
             const titleElement = document.createElement('p');
